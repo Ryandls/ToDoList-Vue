@@ -19,9 +19,9 @@ export default {
   padding: 0;
 }
 body {
-  background-color: rgb(53, 227, 240);
+  background-color: rgb(25, 97, 230);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color:rgb(233, 36, 128);
+  color:black;
 }
 
 #app {
@@ -34,33 +34,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   overflow: auto;
-  border-radius: 10px;
-}
-h1 {
-  text-align: center;
+  border-radius: 15px;
 }
 
-form {
-  width: 100%;
-  display: flex;
-  border-radius: 3px;
-}
-
-form input {
-  width: 80%;
-  border: 0;
-  padding: 10px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-}
-
-form button {
-  width: 20%;
-  border: 0;
-  background-color: rgb(233, 36, 128);
-  color: white;
-  padding: 10px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
 </style>
