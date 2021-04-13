@@ -3,16 +3,18 @@
     <h1>To Do List</h1>
     <form @submit.prevent="save()">
       <input type="text" placeholder="Digite uma tarefa..." v-model="toDo" />
-      <button>Enviar</button>
+      <button type="submit">Enviar</button>
     </form>
     <p class="error-message" v-show="errorMessage">{{ errorMessage }}</p>
   </div>
   <div class="to-do-list">
     <ol>
       <li v-for="td in toDoList" :key="td.text">
-        <span class="text">{{ td.text }}</span>
+        <span class="text" :class="{ completed: td.completed }">
+          {{ td.text }}</span
+        >
         <span class="actions">
-          <button class="complete">&#10004;</button>
+          <button class="complete" @click="complete(td)">&#10004;</button>
           <button class="remove">&#10006;</button>
         </span>
       </li>
@@ -40,6 +42,9 @@ export default {
       }
       this.toDoList.push({ text: this.toDo, completed: false });
       this.toDo = "";
+    },
+    complete(td) {
+      td.completed = true;
     },
   },
 };
