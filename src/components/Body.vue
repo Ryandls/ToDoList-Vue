@@ -1,16 +1,16 @@
 <template>
   <div>
     <h1>To Do List</h1>
-    <form>
-      <input type="text" placeholder="Entre com a uma tarefa..." />
+    <form @submit.prevent="save()">
+      <input type="text" placeholder="Digite uma tarefa..." v-model="toDo" />
       <button>Enviar</button>
     </form>
-    <p class="error-message">Mensagem de erro...</p>
+    <p class="error-message" v-show="errorMessage">{{ errorMessage }}</p>
   </div>
   <div class="to-do-list">
     <ol>
-      <li>
-        <span class="text">Tarefa 01</span>
+      <li v-for="td in toDoList" :key="td.text">
+        <span class="text">{{ td.text }}</span>
         <span class="actions">
           <button class="complete">&#10004;</button>
           <button class="remove">&#10006;</button>
@@ -20,9 +20,31 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      errorMessage: null,
+      toDoList: [
+        { text: "Tarefa 01", completed: false },
+        { text: "Tarefa 02", completed: true },
+      ],
+      toDo: "",
+    };
+  },
+  methods: {
+    save() {
+      this.errorMessage = null;
+      if (!this.toDo) {
+        this.errorMessage = "Digite a tarefa!";
+        return;
+      }
+      this.toDoList.push({ text: this.toDo, completed: false });
+      this.toDo = "";
+    },
+  },
+};
 </script>
-<style>
+<style scoped>
 h1 {
   text-align: center;
 }
@@ -95,8 +117,7 @@ form button {
 
 .to-do-list ol li .actions button {
   width: 20px;
-  margin-left: 2px;
-  margin-top: 2px;
+  margin: 3px 2px 3px 2px;
   height: 20px;
   line-height: 15px;
   border-radius: 10px;

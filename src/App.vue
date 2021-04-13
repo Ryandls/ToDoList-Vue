@@ -18,10 +18,17 @@ export default {
   margin: 0;
   padding: 0;
 }
+html {
+  position: aboslute;
+  background-image: url("./assets/wallpaper.jpg");
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+}
+
 body {
-  background-color: rgb(25, 97, 230);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color:black;
+  color: black;
 }
 
 #app {
@@ -36,5 +43,4 @@ body {
   overflow: auto;
   border-radius: 15px;
 }
-
 </style>
