@@ -21,6 +21,7 @@ export default {
 html {
   position: aboslute;
   background-image: url("./assets/wallpaper.jpg");
+  background-repeat: no-repeat;
   background-position: center center;
   width: 100%;
   height: 100%;
