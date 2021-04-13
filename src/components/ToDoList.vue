@@ -2,7 +2,12 @@
   <div>
     <h1>To Do List</h1>
     <form @submit.prevent="save()">
-      <input type="text" placeholder="Digite uma tarefa..." v-model="toDo" />
+      <input
+        type="text"
+        placeholder="Digite uma tarefa..."
+        v-model="toDo"
+        ref="toDoInput"
+      />
       <button type="submit">Enviar</button>
     </form>
     <p class="error-message" v-show="errorMessage">{{ errorMessage }}</p>
@@ -14,8 +19,10 @@
           {{ td.text }}</span
         >
         <span class="actions">
-          <button class="complete" @click="complete(td)">&#10004;</button>
-          <button class="remove">&#10006;</button>
+          <button class="complete" v-if="!td.completed" @click="complete(td)">
+            &#10004;
+          </button>
+          <button class="remove" @click="remove(td)">&#10006;</button>
         </span>
       </li>
     </ol>
@@ -26,10 +33,7 @@ export default {
   data() {
     return {
       errorMessage: null,
-      toDoList: [
-        { text: "Tarefa 01", completed: false },
-        { text: "Tarefa 02", completed: true },
-      ],
+      toDoList: [],
       toDo: "",
     };
   },
@@ -46,6 +50,16 @@ export default {
     complete(td) {
       td.completed = true;
     },
+    remove(toDo) {
+      const index = this.toDoList.indexOf(toDo);
+      this.toDoList.splice(index, 1);
+    },
+  },
+  mounted() {
+    this.$refs.toDoInput.focus();
+  },
+  updated() {
+    this.$refs.toDoInput.focus();
   },
 };
 </script>

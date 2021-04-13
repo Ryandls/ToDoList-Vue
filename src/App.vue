@@ -1,13 +1,13 @@
 <template>
-  <Body />
+  <ToDoList />
 </template>
 
 <script>
-import Body from "./components/Body";
+import ToDoList from "./components/ToDoList";
 export default {
   name: "App",
   components: {
-    Body,
+    ToDoList,
   },
 };
 </script>
