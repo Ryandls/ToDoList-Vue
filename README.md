@@ -49,8 +49,8 @@ Criar um To Do List.
     #Clone repo from github
     git clone https://github.com/Ryandls/ToDoList-Vue.git
 
-    #Entry in Rocketpay folder
-    cd cd todolist
+    #Entry in todolist folder
+    cd todolist
 
 
     #Run project:
